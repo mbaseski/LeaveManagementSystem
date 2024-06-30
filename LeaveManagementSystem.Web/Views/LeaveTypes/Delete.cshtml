@@ -1,4 +1,4 @@
-﻿@model LeaveTypeDeleteVM
+﻿@model LeaveTypeReadOnlyVM
 
 @{
     ViewData["Title"] = "Delete Leave Type";
@@ -27,7 +27,7 @@
     
     <form method="post" >
         <input type="hidden" asp-for="Id" />
-        <input type="submit" asp-controller="LeaveTypes" asp-action="Delete" class="btn btn-danger" /> |
+        <input type="submit" asp-controller="LeaveTypes" asp-action="Delete" value="Delete" class="btn btn-danger" /> |
         <a asp-action="Index" class="btn btn-primary">Back to List</a>
     </form>
 </div>

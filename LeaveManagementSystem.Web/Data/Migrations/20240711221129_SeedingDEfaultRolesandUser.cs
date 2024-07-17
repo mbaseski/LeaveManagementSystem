@@ -17,7 +17,7 @@ namespace LeaveManagementSystem.Web.Data.Migrations
                 columns: new[] { "Id", "ConcurrencyStamp", "Name", "NormalizedName" },
                 values: new object[,]
                 {
-                    { "26e8fd60-aa62-4a31-820b-1dc183fa42f3", null, "Supervior", "SUPERVISOR" },
+                    { "26e8fd60-aa62-4a31-820b-1dc183fa42f3", null, "Supervisor", "SUPERVISOR" },
                     { "79b38cac-6d0d-4eb8-bcb9-8ccff0d30dfc", null, "Employee", "EMPLOYEE" },
                     { "d3e226c4-0929-47fb-8169-ff3ecc9db83d", null, "Administrator", "ADMINISTRATOR" }
                 });

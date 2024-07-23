@@ -104,7 +104,7 @@ namespace LeaveManagementSystem.Web.Areas.Identity.Pages.Account
             public DateOnly DateOfBirth { get; set; }
 
             public string RoleName { get; set; }
-            public string[] RoleNames { get; set; }
+            public string[] RoleNames { get; set; } 
         }
 
 

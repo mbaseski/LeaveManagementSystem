@@ -122,7 +122,7 @@ namespace LeaveManagementSystem.Web.Areas.Identity.Pages.Account
         public async Task<IActionResult> OnPostAsync(string returnUrl = null)
         {
             returnUrl ??= Url.Content("~/");
-            ExternalLogins = (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
+            ExternalLogins =  (await _signInManager.GetExternalAuthenticationSchemesAsync()).ToList();
             if (ModelState.IsValid)
             {
                 var user = CreateUser();
@@ -139,13 +139,13 @@ namespace LeaveManagementSystem.Web.Areas.Identity.Pages.Account
                 {
                     _logger.LogInformation("User created a new account with password.");
 
-                   if(Input.RoleName == "Supervisor")
+                   if(Input.RoleName == Roles.Supervisor)
                     {
-                        await _userManager.AddToRolesAsync(user, ["Employee", "Supervisor"]);
+                        await _userManager.AddToRolesAsync(user, [Roles.Employee, Roles.Supervisor]);
                     }
                     else
                     {
-                        await _userManager.AddToRoleAsync(user, "Employee");
+                        await _userManager.AddToRoleAsync(user, Roles.Employee);
                     }
                     
 
@@ -178,6 +178,13 @@ namespace LeaveManagementSystem.Web.Areas.Identity.Pages.Account
             }
 
             // If we got this far, something failed, redisplay form
+            // We also know that we need to reload the list of roles since it waform-submitted value. 
+            var roles = await _roleManager.Roles
+                .Select(q => q.Name)
+                .Where(q => q != "Administrator")
+                .ToArrayAsync();
+            Input.RoleNames = roles;
+
             return Page();
         }
 
